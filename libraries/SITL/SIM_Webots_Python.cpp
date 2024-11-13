@@ -22,9 +22,6 @@
 
 #include <stdio.h>
 #include <errno.h>
-#include <cstdlib> // For system()
-#include <cstring> // For std::strcmp
-
 
 namespace SITL {
 
@@ -56,7 +53,8 @@ void WebotsPython::set_interface_ports(const char* address, const int port_in, c
     printf("Bind %s:%d for SITL in\n", "127.0.0.1", port_in);
     socket_sitl.reuseaddress();
     socket_sitl.set_blocking(false);
-    _webots_address = address; // Use localhost otherwise
+
+    _webots_address = address;
     _webots_port = port_out;
     printf("Setting Webots interface to %s:%d \n", _webots_address, _webots_port);
 }
